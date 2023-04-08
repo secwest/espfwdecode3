@@ -15,6 +15,13 @@ fsize = chk = bsize = usize = 0
 htype = baddr = uaddr = ''
 useg = b''
 
+def hexdump(data, length=16):
+    for i in range(0, len(data), length):
+        chunk = data[i:i + length]
+        hex_chunk = ' '.join(f'{b:02x}' for b in chunk)
+        ascii_chunk = ''.join(chr(b) if 32 <= b < 127 else '.' for b in chunk)
+        print(f'{hex_chunk:<48} {ascii_chunk}')
+
 while True:
     t = f.read(8)
     if not t:
@@ -26,7 +33,7 @@ while True:
         baddr, bsize = '', 0
     if sh in [0xea, 0xe9, 0xff] and uaddr:
         print(f"{'Unknown':<8} {'':<12} {'Len: 0x'+format(usize, '08x'):<17} {usize:<12} {'Off: 0x'+format(uaddr, '08x'):<17} {uaddr}")
-        print(' '.join(hex(b) for b in bytearray(useg)))
+        hexdump(useg)
         uaddr, useg, usize = '', b'', 0
     if l < 8:
         print(f"Extra Data [no-header] of Length: {len(t)} -> {' '.join(hex(b) for b in bytearray(t))}")

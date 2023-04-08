@@ -22,10 +22,10 @@ while True:
     l = len(t)
     sh = t[0]
     if sh != 0xff and baddr:
-        print(f"{'Blank(s)':<8} {'0xff':<12} {'0x'+format(bsize, '08x'):<12} {bsize:<12} {'0x'+format(baddr, '08x'):<12} {baddr}")
+        print(f"{'Blank(s)':<8} {'0xff':<12} {'Len: 0x'+format(bsize, '08x'):<17} {bsize:<12} {'Off: 0x'+format(baddr, '08x'):<17} {baddr}")
         baddr, bsize = '', 0
     if sh in [0xea, 0xe9, 0xff] and uaddr:
-        print(f"{'Unknown':<8} {'':<12} {'0x'+format(usize, '08x'):<12} {usize:<12} {'0x'+format(uaddr, '08x'):<12} {uaddr}")
+        print(f"{'Unknown':<8} {'':<12} {'Len: 0x'+format(usize, '08x'):<17} {usize:<12} {'Off: 0x'+format(uaddr, '08x'):<17} {uaddr}")
         print(' '.join(hex(b) for b in bytearray(useg)))
         uaddr, useg, usize = '', b'', 0
     if l < 8:

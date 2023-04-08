@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# patterned after: https://microcontrollerelectronics.com/decoding-an-esp8266-firmware-image/
+
 import os
 import struct
 import sys

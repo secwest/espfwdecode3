@@ -28,7 +28,7 @@ def hexdump(data, start_address, compact_repeats=True):
                     break
             if repeat_len >= 16:
                 compacted = True
-                print(f"  0x{addr:08x}: {'..' * 48} [0x{repeat_char:02x}] x {repeat_len}")
+                print(f"  0x{addr:08x}: {repeat_len} byte(s) of 0x{repeat_char:02x}")
                 addr += repeat_len
                 i += repeat_len
         if not compacted:

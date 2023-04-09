@@ -81,7 +81,7 @@ def firmware_image_dump(firmware_file: str):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python esptool9.py <firmware_file>")
+        print("Usage: python espfwdump.py <firmware_file>")
         sys.exit(1)
 
     firmware_file = sys.argv[1]
